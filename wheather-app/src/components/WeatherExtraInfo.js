@@ -7,4 +7,5 @@ const WeatherExtraInfo = ({ humidity, wind}) => (
     </div>
 );
 
+//git prueba utem
 export default WeatherExtraInfo;
