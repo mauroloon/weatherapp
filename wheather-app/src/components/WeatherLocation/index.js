@@ -30,7 +30,7 @@ class WeatherLocation extends Component {
 
     handleUpdateClick = () => {
         this.setState({ // se setea
-            city: 'Valdivia',
+            //city: 'Valdivia', //Se puede setear sin todas las variables
             data: data2
         });
         console.log("actualizar");
