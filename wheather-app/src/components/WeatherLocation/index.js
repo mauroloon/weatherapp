@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import Location from './Location';
 import WeatherData from './WeatherData';
-import { SUN, WINDY } from './../../constants/weather';
+import { SUN } from './../../constants/weather';
 import './styles.css';
+
+const location = "Santiago";
+const api_key = "0b2796afb46e67815b2b056c9ecf2f20";
+const api_weather = `http://api.openweathermap.org/data/2.5/weather?q=${ location }&appid=${ api_key }`;
 
 const data1 = {
         temperature: 20,
@@ -11,12 +15,6 @@ const data1 = {
         wind: '10 m/s',
 };
 
-const data2 = {
-    temperature: 10,
-    weatherState: WINDY,
-    humidity: 3,
-    wind: '20 m/s',
-};
 
 class WeatherLocation extends Component {
 
@@ -29,11 +27,13 @@ class WeatherLocation extends Component {
     }
 
     handleUpdateClick = () => {
-        this.setState({ // se setea
-            //city: 'Valdivia', //Se puede setear sin todas las variables
-            data: data2
+        fetch(api_weather).then( data => {
+            console.log(data);
+            return data.json();
+        }).then( weather_data =>{
+            debugger;
+            console.log(weather_data);
         });
-        console.log("actualizar");
     }
 
     render = () => {
