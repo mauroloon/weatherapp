@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import transforWeather from './../../services/transformWeather';
 import { api_weather } from './../../constants/api_url'; //se ocupan las llaves porque no esta la exportación en default
 import Location from './Location';
@@ -52,7 +53,7 @@ class WeatherLocation extends Component {
                 <Location city={ city }></Location>
                 {data ? 
                     <WeatherData data={ data }></WeatherData> :
-                    "Cargando..."
+                    <CircularProgress size={50}/> /* para el loading */
                 }
                 {/* <button onClick={ this.handleUpdateClick }>Actualizar</button> */}
             </div>
