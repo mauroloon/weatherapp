@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Paper from '@material-ui/core/Paper';
-import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography';
-import Toolbar from '@material-ui/core/Toolbar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Paper from 'material-ui/Paper';
+import AppBar from 'material-ui/AppBar';
 import { Grid, Row, Col} from 'react-flexbox-grid';
 import './App.css';
 import LocationList from './components/LocationList';
+import ForecastExtended from './components/ForecastExtended';
+
 
 
 const cities = [
@@ -28,30 +29,30 @@ class App extends Component {
   }
   render() {
     return (
-      <Grid fluid> 
-        <Row>
-          <AppBar position='sticky'>
-            <Toolbar>
-              <Typography variant='title' color='inherit'>
-                Weather App
-              </Typography>
-            </Toolbar>
-          </AppBar>
-        </Row>
-        <Row>
-          <Col xs={12} md={6}>
-            <LocationList 
-              cities={cities} 
-              onSelectedLocation = {this.handleSelectionLocation}>
-            </LocationList>
-          </Col>  
-          <Col xs={12} md={6}>
-            <Paper elevation={4}>
-              <div className="details"></div>
-            </Paper>
-          </Col>
-        </Row>
-      </Grid>
+      <MuiThemeProvider>
+        <Grid> 
+          <Row>
+            <Col xs={12}>
+                <AppBar title="Weather App"/>
+            </Col>                              
+          </Row>
+          <Row>
+            <Col xs={12} md={6}>
+              <LocationList 
+                cities={cities} 
+                onSelectedLocation = {this.handleSelectionLocation}>
+              </LocationList>
+            </Col>  
+            <Col xs={12} md={6}>
+              <Paper zDepth={4}>
+                <div className="details">
+                  <ForecastExtended></ForecastExtended>
+                </div>
+              </Paper>
+            </Col>
+          </Row>
+        </Grid>
+      </MuiThemeProvider>
     );
   }
 }
