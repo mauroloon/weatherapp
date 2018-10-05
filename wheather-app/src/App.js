@@ -24,10 +24,21 @@ const cities = [
 
 class App extends Component {
 
+  constructor(){
+    super();
+    this.state = { city: null }
+  }
+
   handleSelectionLocation = city => {
+    this.setState({
+      //city: city gracias a ecmascript se puede hacer lo de abajo
+      city
+    })
     console.log(`handleSelectionLocation ${city}`);
   }
+
   render() {
+    const { city } = this.state;
     return (
       <MuiThemeProvider>
         <Grid> 
@@ -46,7 +57,12 @@ class App extends Component {
             <Col xs={12} md={6}>
               <Paper zDepth={4}>
                 <div className="details">
-                  <ForecastExtended></ForecastExtended>
+                  {
+                    city === null ?
+                    <h1>No se seleccionó ciudad</h1>
+                    :
+                    <ForecastExtended city={ city }></ForecastExtended>
+                  }                  
                 </div>
               </Paper>
             </Col>
