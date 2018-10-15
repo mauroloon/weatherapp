@@ -59,7 +59,7 @@ class App extends Component {
                 <div className="details">
                   {
                     city === null ?
-                    <h1>No se seleccionó ciudad</h1>
+                    null
                     :
                     <ForecastExtended city={ city }></ForecastExtended>
                   }                  
