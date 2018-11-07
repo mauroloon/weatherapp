@@ -5,12 +5,12 @@ import WeatherData from './../WeatherLocation/WeatherData/index';
 
 const ForecastItem = ({ weekDay, hour, data }) => (
     <div>
-        <div>{weekDay} Hora: {hour}</div>
+        <h2>{weekDay} - {hour} hs</h2>
         <WeatherData data={data}/>
     </div>
 );
 
-ForecastItem.PropTypes = {
+ForecastItem.proptypes = {
     weekDay: PropTypes.string.isRequired,
     hour: PropTypes.number.isRequired,
     data: PropTypes.shape({ //ES UN OBJETO
