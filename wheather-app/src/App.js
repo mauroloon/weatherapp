@@ -6,7 +6,8 @@ import { Grid, Row, Col} from 'react-flexbox-grid';
 import './App.css';
 import LocationList from './components/LocationList';
 import ForecastExtended from './components/ForecastExtended';
-
+import { store } from './store';
+import { setCity } from './actions';
 
 
 const cities = [
@@ -35,6 +36,8 @@ class App extends Component {
       city
     })
     console.log(`handleSelectionLocation ${city}`);
+
+    store.dispatch(setCity(city));
   }
 
   render() {
