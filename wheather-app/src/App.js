@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
 import { Grid, Row, Col} from 'react-flexbox-grid';
-import PropTypes from 'prop-types';
 import './App.css';
-import LocationList from './components/LocationList';
+import LocationListContainers from './containers/LocationListContainers';
 import ForecastExtended from './components/ForecastExtended';
-import { setCity } from './actions';
 
 
 const cities = [
@@ -30,17 +27,7 @@ class App extends Component {
     super();
     this.state = { city: null }
   }
-
-  handleSelectionLocation = city => {
-    this.setState({
-      //city: city gracias a ecmascript se puede hacer lo de abajo
-      city
-    })
-    console.log(`handleSelectionLocation ${city}`);
-
-    this.props.setCity(city);
-  }
-
+  
   render() {
     const { city } = this.state;
     return (
@@ -53,10 +40,9 @@ class App extends Component {
           </Row>
           <Row>
             <Col xs={12} md={6}>
-              <LocationList 
-                cities={cities} 
-                onSelectedLocation = {this.handleSelectionLocation}>
-              </LocationList>
+              <LocationListContainers 
+                cities={cities} >
+              </LocationListContainers>
             </Col>  
             <Col xs={12} md={6}>
               <Paper zDepth={4}>
@@ -77,12 +63,5 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  setCity: PropTypes.func.isRequired,
-}
 
-const mapDispatchToPropsActions = dispatch => ({
-    setCity: value => dispatch(setCity(value))
-});
-
-export default connect(null, mapDispatchToPropsActions)(App);
+export default App;
