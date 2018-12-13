@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
 import { Grid, Row, Col} from 'react-flexbox-grid';
+import PropTypes from 'prop-types';
 import './App.css';
 import LocationList from './components/LocationList';
 import ForecastExtended from './components/ForecastExtended';
-import { store } from './store';
 import { setCity } from './actions';
 
 
@@ -37,7 +38,7 @@ class App extends Component {
     })
     console.log(`handleSelectionLocation ${city}`);
 
-    store.dispatch(setCity(city));
+    this.props.setCity(city);
   }
 
   render() {
@@ -76,4 +77,12 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  setCity: PropTypes.func.isRequired,
+}
+
+const mapDispatchToPropsActions = dispatch => ({
+    setCity: value => dispatch(setCity(value))
+});
+
+export default connect(null, mapDispatchToPropsActions)(App);
