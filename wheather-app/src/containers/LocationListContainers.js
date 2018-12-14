@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setCity } from './../actions';
+import { setSelectedCity } from './../actions';
 import LocationList from './../components/LocationList';
 
 class LocationListContainer extends Component {
@@ -29,7 +29,7 @@ LocationListContainer.propTypes = {
 
 //setea el estado de redux
 const mapDispatchToPropsActions = dispatch => ({
-    setCity: value => dispatch(setCity(value))
+    setCity: value => dispatch(setSelectedCity(value))
 });
 
 //el mapDispatchToPropsActions es un objeto con funciones que se inyectan al componente "LocationListContainer"
