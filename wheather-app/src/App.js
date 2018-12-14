@@ -5,7 +5,7 @@ import AppBar from 'material-ui/AppBar';
 import { Grid, Row, Col} from 'react-flexbox-grid';
 import './App.css';
 import LocationListContainers from './containers/LocationListContainers';
-import ForecastExtended from './components/ForecastExtended';
+import ForecastExtendedContainers from './containers/ForecastExtendedContainers';
 
 
 const cities = [
@@ -22,14 +22,8 @@ const cities = [
 */
 
 class App extends Component {
-
-  constructor(){
-    super();
-    this.state = { city: null }
-  }
   
   render() {
-    const { city } = this.state;
     return (
       <MuiThemeProvider>
         <Grid> 
@@ -46,13 +40,8 @@ class App extends Component {
             </Col>  
             <Col xs={12} md={6}>
               <Paper zDepth={4}>
-                <div className="details">
-                  {
-                    city === null ?
-                    null
-                    :
-                    <ForecastExtended city={ city }></ForecastExtended>
-                  }                  
+                <div className="details">                  
+                    <ForecastExtendedContainers ></ForecastExtendedContainers>
                 </div>
               </Paper>
             </Col>

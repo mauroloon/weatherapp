@@ -27,8 +27,10 @@ LocationListContainer.propTypes = {
     cities: PropTypes.array.isRequired
 }
 
+//setea el estado de redux
 const mapDispatchToPropsActions = dispatch => ({
     setCity: value => dispatch(setCity(value))
 });
 
+//el mapDispatchToPropsActions es un objeto con funciones que se inyectan al componente "LocationListContainer"
 export default connect(null, mapDispatchToPropsActions)(LocationListContainer);
